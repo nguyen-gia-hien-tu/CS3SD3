@@ -1,0 +1,62 @@
+/*
+Question 5 Assignment 1
+CREDIT[n] is equivalent to the process (state) where the machine is holding n credit in it
+in.coin[n] is the action where n credit is inputted into the machine
+out.coin[n] is the action of giving changes of n credit
+*/
+DRINKS = CREDIT[0],
+
+CREDIT[0] = (in.coin[5] -> CREDIT[5]
+			|in.coin[10] -> CREDIT[10]
+			|in.coin[25] -> CREDIT[25]),
+
+CREDIT[5] = (in.coin[5] -> CREDIT[10]
+			|in.coin[10] -> CREDIT[15]
+			|in.coin[25] -> CREDIT[30]),
+
+CREDIT[10] = (in.coin[5] -> CREDIT[15]
+			 |in.coin[10] -> CREDIT[20]
+			 |in.coin[25] -> CREDIT[35]),
+
+CREDIT[15] = (in.coin[5] -> CREDIT[20]
+			 |in.coin[10] -> CREDIT[25]
+			 |in.coin[25] -> CREDIT[40]
+			 |sugerola -> CREDIT[0]),
+
+CREDIT[20] = (in.coin[5] -> CREDIT[25]
+			 |in.coin[10] -> CREDIT[30]
+			 |in.coin[25] -> CREDIT[45]
+			 |sugerola -> CHANGE[5]
+		 	 |diet -> CREDIT[0]),
+
+CREDIT[25] = (sugerola -> CHANGE[10]
+			 |diet -> CHANGE[5]
+			 |super_diet -> CREDIT[0]),
+
+CREDIT[30] = (sugerola -> CHANGE[15]
+			 |diet -> CHANGE[10]
+			 |super_diet -> CHANGE[5]),
+
+CREDIT[35] = (sugerola -> CHANGE[20]
+			 |diet -> CHANGE[15]
+			 |super_diet -> CHANGE[10]),
+
+CREDIT[40] = (sugerola -> CHANGE[25]
+			 |diet -> CHANGE[20]
+			 |super_diet -> CHANGE[15]),
+
+CREDIT[45] = (sugerola -> CHANGE[30]
+			 |diet -> CHANGE[25]
+			 |super_diet -> CHANGE[20]),
+
+CHANGE[5] = (out.coin[5] -> CREDIT[0]),
+
+CHANGE[10] = (out.coin[10] -> CREDIT[0]),
+
+CHANGE[15] = (out.coin[15] -> CREDIT[0]),
+ 
+CHANGE[20] = (out.coin[20] -> CREDIT[0]),
+
+CHANGE[25] = (out.coin[25] -> CREDIT[0]),
+
+CHANGE[30] = (out.coin[30] -> CREDIT[0]).
