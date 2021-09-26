@@ -1,0 +1,8 @@
+/**
+LTSA source code for process P3 in Question 1 Assignment 1
+*/
+P3 = A,
+A  = (a -> D | b -> B),
+B  = (a -> A | a -> C),
+C  = (b -> B | b -> D | c -> C),
+D  = (a -> C | c -> A).

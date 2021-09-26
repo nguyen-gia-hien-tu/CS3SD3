@@ -1,0 +1,14 @@
+RADIO = OFF,
+OFF = (on -> TOP),
+TOP = (off -> OFF
+	  |reset -> TOP
+	  |scan -> SCANNING),
+SCANNING = (off -> OFF
+		   |reset -> TOP
+		   |lock -> STATION
+		   |end -> BOTTOM),
+STATION = (off -> OFF
+		  |reset -> TOP
+		  |scan -> SCANNING),
+BOTTOM = (off -> OFF
+		 |reset -> TOP).
