@@ -1,7 +1,9 @@
-
-
-SYSTEM = START,
-START = (room_request -> REQUESTED),
-REQUESTED = (send_confirmation -> CONFIRM | reserve -> RESERVATION),
-CONFIRM = (use -> STOP | cancel -> STOP),
-RESERVATION = (send_confirmation -> CONFIRM | cancel -> STOP).
+SYSTEM 		= START,
+START  		= (room_request -> AVAILABLE
+		 	  |room_request -> UNAVAILABLE),
+AVAILABLE 	= (send_confirmation -> USE
+			  |send_confirmation -> CANCEL),
+UNAVAILABLE = (reserve -> AVAILABLE
+			  |reserve -> CANCEL),
+USE			= (use -> STOP),
+CANCEL		= (cancel -> STOP).

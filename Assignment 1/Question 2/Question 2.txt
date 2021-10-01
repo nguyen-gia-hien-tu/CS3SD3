@@ -5,11 +5,12 @@ FSP for Question 2
 HOTEL = START,
 START = (room_request -> REQUESTED),
 REQUESTED = (send_confirmation -> CONFIRMED
-			|reserve -> WAITING),
+	    |reserve -> WAITING),
 CONFIRMED = (move_in -> pay -> ARCHIVED
-			|cancel -> STOP),
+	    |cancel -> STOP),
 WAITING = (send_confirmation -> CONFIRMED
-		  |cancel -> STOP),
+	  |cancel -> STOP),
 ARCHIVED = (store_record -> STOP).
 
 
+The LTS is given in "Q2.png" file

@@ -1,0 +1,15 @@
+/*
+FSP for Question 8
+*/
+
+P1 = (b -> P3 | a -> P3),
+P3 = (d -> P1).
+P2 = (b -> P4 | c -> P4),
+P4 = (d -> P2).
+
+||N1 = (P1 || P2).
+
+
+The LTS for P1 is given in "Q8 P1.png" file
+The LTS for P2 is given in "Q8 P2.png" file
+The LTS for N1 (the composition of P1 and P2) is given in "Q8 N1.png" file
