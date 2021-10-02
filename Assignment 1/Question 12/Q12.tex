@@ -19,11 +19,29 @@
 \subsection*{Question 12}
 \begin{enumerate}[label=\alph*.]
     \item Show $P_2 \approx P_3$, i.e., $P_2$ and $P_3$ are \emph{bisimilar}. \\
+
         Clearly, $p_0 \approx s_0$ as only $a$ and $b$ come out of both $p_0$ and
         $s_0$. After trace $a$, in $P_2$, $p_0$ goes to state $p_1$; in $P_3$, 
         $s_0$ goes to state $s_1$. $p_1 \approx s_1$ since only $a$ comes out of
         both $p_1$ and $s_1$. $p_2 \approx s_2$ since $a, b$ and $c$ can be
-        executed from both states. $p_3 \approx s_3$
+        executed from both states. $p_3 \approx s_3$ since only $a$ and $c$ can
+        come out of both $p_3$ and $s_3$. $p_4 \approx s_4$ since only $a$ and
+        $b$ come out of both $p_4$ and $s_4$. $p_5 \approx s_5$ since only $c$
+        can be executed from both states and both lead back to the starting
+        states. $p_5 \approx s_6$ since only $c$ can be executed from both states
+        and both lead back to the starting states as well. Hence $P_2 \approx P_3$.
+    
+    \item Show that $P_1 \not \approx P_2$, i.e., $P_1$ and $P_2$ are not
+          \emph{bisimilar}. \\
+
+        Clearly, $q_0 \approx p_0$ since only transition $a$ can be executed from
+        both $q_0$ and $p_0$. Then $q_1 \approx p_1$ since only $a$ comes out of
+        both $p_1$ and $q_1$. After this trace $a$, in $P_1$, $q_1$ goes to either
+        $q_2$ or $q_3$ while $p_1$ goes to $p_2$ in $P_2$. However, $q_2 \not
+        \approx p_2$ since at state $p_2$, $a$, $b$, and $c$ can be executed but
+        from state $q_2$, only $a$ and $c$ can be executed. $q_3 \not \approx p_2$
+        either since only $a$ and $b$ can be executed from $q_3$. Therefore,
+        $P_1 \not \approx P_2$ 
 
 \end{enumerate}
 
