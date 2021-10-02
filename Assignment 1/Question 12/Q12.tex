@@ -8,7 +8,7 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 
-\title{Assignment 1 Question 12}
+\title{Assignment 1}
 \author{Hien Tu - tun1}
 \date{\today}
 
@@ -29,7 +29,7 @@
         $b$ come out of both $p_4$ and $s_4$. $p_5 \approx s_5$ since only $c$
         can be executed from both states and both lead back to the starting
         states. $p_5 \approx s_6$ since only $c$ can be executed from both states
-        and both lead back to the starting states as well. Hence $P_2 \approx P_3$.
+        and both lead back to the starting states as well. Hence $P_2 \approx P_3$. \\
     
     \item Show that $P_1 \not \approx P_2$, i.e., $P_1$ and $P_2$ are not
           \emph{bisimilar}. \\
@@ -41,7 +41,23 @@
         \approx p_2$ since at state $p_2$, $a$, $b$, and $c$ can be executed but
         from state $q_2$, only $a$ and $c$ can be executed. $q_3 \not \approx p_2$
         either since only $a$ and $b$ can be executed from $q_3$. Therefore,
-        $P_1 \not \approx P_2$ 
+        $P_1 \not \approx P_2$. \\
+
+    \item Show that $P_1 \not \approx P_3$, i.e., $P_1$ and $P_3$ are not
+          \emph{bisimilar}. \\
+
+        Clearly, $q_0 \approx s_0$ since only transition $a$ can be executed from
+        both states. After trace $a$, in $P_1$, $q_0$ goes to state $q_1$ while
+        in $P_3$, $s_0$ goes to state $s_1$. $q_1 \approx s_1$ since only
+        transition $a$ can be executed in both cases. After this trace $a$, in
+        $P_1$, $q_1$ goes to either $q_2$ or $q_3$ while in $P_3$, $s_1$ goes to
+        state $s_2$. However, $s_2 \not \approx q_2$ and $s_2 \not \approx q_3$.
+        At $s_2$, $a$, $b$ and $c$ can be executed while at $q_2$, only $a$ and
+        $c$ can be executed; while at $q_3$, only $a$ and $b$ can be executed.
+        Hence, $P_1 \not \approx P_3$.
+
+    \item Traces($P_1$) = Traces($P_2$) = Traces($P_3$)
+        = Pref($(aa (c^*a \, \cup \, b^*a) c)^*$)
 
 \end{enumerate}
 
