@@ -1,0 +1,32 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\title{Assignment 1 Question 12}
+\author{Hien Tu - tun1}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Question 12}
+\begin{enumerate}[label=\alph*.]
+    \item Show $P_2 \approx P_3$, i.e., $P_2$ and $P_3$ are \emph{bisimilar}. \\
+        Clearly, $p_0 \approx s_0$ as only $a$ and $b$ come out of both $p_0$ and
+        $s_0$. After trace $a$, in $P_2$, $p_0$ goes to state $p_1$; in $P_3$, 
+        $s_0$ goes to state $s_1$. $p_1 \approx s_1$ since only $a$ comes out of
+        both $p_1$ and $s_1$. $p_2 \approx s_2$ since $a, b$ and $c$ can be
+        executed from both states. $p_3 \approx s_3$
+
+\end{enumerate}
+
+
+
+\end{document}

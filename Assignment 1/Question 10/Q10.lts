@@ -1,0 +1,7 @@
+TURNSTILE = (passenger -> TURNSTILE).
+CONTROL(N = 3) = CONTROL[0],
+CONTROL[i:0..N] = (when (i < N) passenger -> CONTROL[i+1]
+				  |when (i == N) depart -> CONTROL[0]).
+CAR = (depart -> CAR).
+
+||ROLLER = (TURNSTILE || CONTROL || CAR).

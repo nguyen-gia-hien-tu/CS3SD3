@@ -1,0 +1,5 @@
+P1 = (idle1 -> (read1 -> P1 | write1 -> P1)).
+P2 = (idle2 -> (read2 -> P2 | write2 -> P2)).
+MUT = (write1 -> MUT | write2 -> MUT).
+
+||PRINT = (P1 || P2 || MUT).
