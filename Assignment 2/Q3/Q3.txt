@@ -1,0 +1,3 @@
+If car departure is lower priority than car arrival, starvation doesn't occur
+since the FSP guarantees the car to only be able to depart when there is no
+space left in the parking (no car can arrive when the parking slot is full).

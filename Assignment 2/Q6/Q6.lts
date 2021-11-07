@@ -1,0 +1,18 @@
+PASSENGER = (enter -> PASSENGER
+			|exit -> PASSENGER
+			).
+
+const M = 10
+LIFT = SPACES[M],
+SPACES[i:0..M] = (when (i > 0) enter -> SPACES[i-1]
+				 |when (i < M) exit -> SPACES[i+1]
+				 ).
+
+||ELEVATOR = (PASSENGER || LIFT).
+
+property SLIFT = SLIFT[M],
+SLIFT[s:0..M] = (when (s > 0) enter -> SLIFT[s-1]
+				|when (s < M) leave -> SLIFT[s+1]
+				).
+
+||CHECK_ELEVATOR = (ELEVATOR || SLIFT).

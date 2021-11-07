@@ -1,0 +1,2 @@
+Elementary Petri Nets are the closest to FSP. Place/Transition and Colour Petri Nets
+have significantly smaller size than Elementary Petri Nets and LTS.

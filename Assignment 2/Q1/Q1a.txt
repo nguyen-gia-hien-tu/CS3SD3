@@ -1,0 +1,36 @@
+Assume that K = 3, M = 3 and N = 2. The FSP (written in LTSA style) and safety property are as follows.
+The LTSA code for this is given in Q1a.lts file
+
+const K = 3
+range Phil = 1..K
+PHIL = (think -> PHIL
+	   |get_cookie -> eat_cookie -> PHIL
+	   |get_cola -> drink_cola -> PHIL
+	   ).
+||PHILS = (forall[i:Phil] phil[i]:PHIL).
+
+SERVANT = (refill_cookie -> SERVANT
+		  |refill_cola -> SERVANT
+		  ).
+
+const M = 3
+range Num_Cookies = 0..M
+COOKIES = COOKIES[M],
+COOKIES[i:Num_Cookies] = (when (i == 0) refill_cookie -> COOKIES[M]
+						 |when (i > 0) get_cookie -> COOKIES[i-1]
+						 ).
+
+const N = 2
+range Num_Cola = 0..N
+COLA = COLA[N],
+COLA[i:Num_Cola] = (when (i == 0) refill_cola -> COLA[N]
+				   |when (i > 0) get_cola -> COLA[i-1]
+				   ).
+
+property SCOOKIE = SCOOKIE[M],
+SCOOKIE[s:Num_Cookies] = (when (s == 0) refill_cookie -> SCOOKIE[M]).
+
+property SCOLA = SCOLA[N],
+SCOLA[s:Num_Cola] = (when (s == 0) refill_cola -> SCOLA[N]).
+
+||DINNERS = (PHILS || SERVANT || COOKIES || COLA || SCOOKIE || SCOLA).

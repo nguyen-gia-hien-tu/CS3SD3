@@ -1,0 +1,17 @@
+DOOR = (open -> OPEN).
+
+OPEN = (pass -> OPEN
+	   |close -> DOOR
+	   ).
+
+DIRECTOR = (east.open -> west.open -> east.close -> west.close -> DIRECTOR).
+
+const N = 4
+CONTROL = CONTROL[0],
+CONTROL[i:0..N] = (when (i == 0) no_visitor -> CONTROL[i]
+				  |when (i < N) enter -> CONTROL[i+1]
+				  |when (i > 0) exit -> CONTROL[i-1]
+				  ).
+
+||MUSEUM = (DIRECTOR || east:DOOR || west:DOOR || CONTROL)/
+			{east.pass/enter, west.pass/exit, west.close/no_visitor}. 

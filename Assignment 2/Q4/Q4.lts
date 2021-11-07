@@ -1,0 +1,21 @@
+FORK = (get -> put -> FORK).
+PHIL = (think -> mutex.down -> right.get -> left.get -> mutex.up
+			-> eat -> right.put -> left.put -> PHIL).
+
+const Max = 1
+range Int = 0..Max
+SEMAPHORE(N=1) = SEMA[N],
+SEMA[v:Int] = (when (v < Max) up -> SEMA[v+1]
+			  |when (v > 0) down -> SEMA[v-1]
+			  ).
+
+||DINERS(N=4) = (forall [i:0..N]
+	(phil[i] : PHIL ||
+	 {phil[i].right, phil[(i+1)%5].left} :: FORK ||
+	 phil[i] :: mutex : SEMAPHORE(1))).
+
+/*
+Binary Semaphore ensures that the process phil[i] will be able to pick both
+left and right forks as an atomic action (it cannot be interrupted once the
+picking starts.
+*/

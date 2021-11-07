@@ -1,0 +1,18 @@
+EAST = (enter -> EAST).
+WEST = (exit -> WEST).
+
+DIRECTOR = (open -> DIRECTOR
+		   |close -> DIRECTOR
+		   ).
+
+const M = 4
+CONTROL = CONTROL[0],
+CONTROL[i:0..M] = (open -> (when (i < M) enter -> CONTROL[i+1] | when (i > 0) exit -> CONTROL[i-1])
+				  |close -> (when (i > 0) exit -> CONTROL[i-1])).
+
+// CONTROL = (open -> (enter -> CONTROL | exit -> CONTROL)
+//		  |close -> exit -> CONTROL).
+
+||MUSEUM = (EAST || WEST || DIRECTOR || CONTROL).
+
+

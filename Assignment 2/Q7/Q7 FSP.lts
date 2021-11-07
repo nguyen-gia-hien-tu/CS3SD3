@@ -1,0 +1,3 @@
+property P = (a -> (b -> P | a -> P) | b -> a -> P).
+
+SP = (a -> (b -> SP | a -> SP) | b -> (a -> SP | b -> ERROR)).
