@@ -1,0 +1,57 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+
+
+\title{CS3SD3 - Assignment 3}
+\author{Hien Tu - tun1}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Question 7}
+\begin{enumerate}[label=(\alph*)]
+  \item \begin{enumerate}[label=(\roman*)]
+          \item $\neg p \Rightarrow r \equiv \neg (\neg p) \lor r) \equiv p \lor
+                r$. Since we have $L(s_0) = \{r\}$, $M, s_0 \vDash \varphi$. We
+                have $L(s_2) = \{p, q\}$, so $M, s_2 \vDash \varphi$
+          \item Since $r \in L(s_0)$, $r \in L(s_1)$, and we can have path $s_0
+                \rightarrow s_1 \rightarrow s_1 \rightarrow s_1 \rightarrow
+                \dots$, we know that $M, s_0 \vDash \text{EG } r$. Therefore,
+                $M, s_0 \vDash \neg \text{EG } r$ is false. Since $r \not \in
+                L(s_2)$, we know that $M, s_0 \vDash \neg \text{EG } r$ is true
+                as future also includes present.
+          \item Since $t \not \in L(s_0)$, we know that $M, s_0 \vDash
+                \text{E}(t \text{ U } q)$ is false. Since $q \in L(s_2)$, we
+                know that $q$ already holds in $s_2$, thus, we don't need $t$ to
+                hold anymore. Therefore, $M, s_2 \vDash \text{E}(t \text{ U }
+                q)$ is true.
+          \item Since $q \in L(s_2)$, and we have a path $s_0 \rightarrow s_2
+                \rightarrow \dots$, we know $M, s_0 \vDash \text{F } q$ is true.
+                Since $q \in L(s_2)$, we also know $M, s_2 \vDash \text{F } q$
+                is true since future also includes present.
+        \end{enumerate}
+\end{enumerate}
+  
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

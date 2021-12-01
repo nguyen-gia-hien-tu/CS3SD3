@@ -1,0 +1,9 @@
+range B = 1..2
+range M = 1..2
+
+set   C = {[B], [M]}
+
+CUSTOMER = (getcheese -> CUSTOMER).
+COUNTER = (getcheese -> COUNTER).
+
+||CHEESE_COUNTER = (c[C]:CUSTOMER || {c[C]}::COUNTER).

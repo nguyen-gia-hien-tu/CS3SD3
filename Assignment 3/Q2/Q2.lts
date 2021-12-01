@@ -1,0 +1,27 @@
+// 2a)
+const N = 2 // number of customers
+const M = 3 // number of pumps
+
+range C = 1..N
+range P = 1..M
+range A = 1..2
+
+CUSTOMER = (prepay[a:A] -> gas[x:A] -> if (x == a) then CUSTOMER else ERROR).
+CASHIER = (customer[c:C].prepay[x:A] -> start[P][c][x] -> CASHIER).
+PUMP = (start[c:C][x:A] -> gas[c][x] -> PUMP).
+DELIVER = (gas[P][c:C][x:A] -> customer[c].gas[x] -> DELIVER).
+
+||STATION = (CASHIER || pump[1..M]:PUMP || DELIVER)
+			/{pump[i:1..M].start/start[i],
+			  pump[i:1..M].gas/gas[i]}.
+||GASSTATION = (customer[1..N]:CUSTOMER || STATION).
+
+
+// 2b)
+range T = 1..2
+property
+	FIFO = (customer[i:T].prepay[A] -> PAID[i]),
+	PAID[i:T] = (customer[i].gas[A] -> FIFO
+				|customer[j:T].prepay[A] -> PAID[i][j]),
+	PAID[i:T][j:T]= (customer[i].gas[A] -> PAID[j]).
+||CHECK_FIFO = (GASSTATION || FIFO).
