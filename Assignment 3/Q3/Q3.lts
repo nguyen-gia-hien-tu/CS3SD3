@@ -6,4 +6,4 @@ set   C = {[B], [M]}
 CUSTOMER = (getcheese -> CUSTOMER).
 COUNTER = (getcheese -> COUNTER).
 
-||CHEESE_COUNTER = (c[C]:CUSTOMER || {c[C]}::COUNTER).
+||CHEESE_COUNTER = (c[C]:CUSTOMER || {c[C]}::COUNTER) >> {getcheese}.

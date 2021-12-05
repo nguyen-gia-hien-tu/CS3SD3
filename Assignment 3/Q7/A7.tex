@@ -35,6 +35,27 @@
                 Since $q \in L(s_2)$, we also know $M, s_2 \vDash \text{F } q$
                 is true since future also includes present.
         \end{enumerate}
+  \item LTL: $\text{G}(\text{F } p \land (p \Rightarrow \text{F } s) \land (p \Rightarrow
+              \text{F } t))$ \\
+        CTL: $\text{AG}(\text{F } p \land
+                        \text{AG}(p \Rightarrow \text{AF } s) \land
+                        \text{AG}(p \Rightarrow \text{AF } t))$
+  \item LTL: $\text{G}(\text{F } q \land \text{F } r \land
+                        (q \Rightarrow (\neg\, p \text{ U } r)) \land
+                        (q \Rightarrow (t \text{ U } r)))$ \\
+        CTL: $\text{AG}(\text{F } q \land \text{F } r) \land
+              \text{AG}(q \Rightarrow \text{A}(\neg\, p \text{ U } r)) \land
+              \text{AG}(q \Rightarrow \text{A}(t \text{ U } r))$
+  \item LTL: $s \vDash \text{G}(\text{F } \varPhi)$ \\
+        CTL: $s \vDash \text{AG}(\text{AF } \varPhi)$
+  \item LTL: $\text{G}((p \Rightarrow \text{F } q) \Rightarrow 
+                        (\neg\, r \text{ U } t))$ \\
+        CTL: $\text{AG}((p \Rightarrow \text{F } q) \Rightarrow 
+                          \text{A}(\neg\, r \text{ U } t))$
+  \item LTL: $\text{G}(\text{F } q \land \text{F } r \land 
+                        (q \Rightarrow (\neg\, p \text{ U } r)))$ \\
+        CTL: $\text{AG}(\text{F } q \land \text{F } r) \land
+              \text{AG}(q \Rightarrow \text{A}(\neg\, p \text{ U } r))$
 \end{enumerate}
   
 \end{document}

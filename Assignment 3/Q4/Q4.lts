@@ -1,9 +1,11 @@
 const MT = 4 // maximum ticket number
 
-range B = 1..2
-range M = 1..2
+// range B = 1..2
+// range M = 1..2
 range T = 1..MT
 
+set   B = {bold1, bold2}
+set   M = {meek1, meek2}
 set   C = {[B], [M]}
 
 CUSTOMER = (ticket[t:T] -> getcheese[t] -> CUSTOMER).
@@ -15,3 +17,6 @@ COUNTER = COUNTER[1],
 COUNTER[t:T] = (getcheese -> COUNTER[t%MT + 1]).
 
 ||CHEESE_COUNTER = (c[C]:CUSTOMER || {c[C]}::TICKET || {c[C]}::COUNTER).
+
+progress BOLD = {B.getcheese}
+progress MEEK = {M.getcheese}

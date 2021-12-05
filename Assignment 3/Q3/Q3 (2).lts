@@ -1,0 +1,10 @@
+set Bold = {bold1, bold2}
+set Meek = {meek1, meek2}
+set Customers = {Bold, Meek}
+
+CUSTOMER = (getcheese -> CUSTOMER).
+COUNTER = (getcheese -> COUNTER).
+
+||CHEESE_COUNTER = (c[Customers]:CUSTOMER || {c[Customers]}::COUNTER) >> {c[Meek].getcheese}.
+
+//||CHEESE_COUNTER = (Customers:CUSTOMER || COUNTER)  >> {Meek.getcheese}.
