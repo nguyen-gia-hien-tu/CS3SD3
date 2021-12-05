@@ -1,0 +1,120 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+
+
+\title{CS3SD3 - Assignment 3}
+\author{Hien Tu - tun1}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Question 8}
+\begin{flalign*}
+  \text{Let }
+  & \text{lpr}_i \text{ be local processing of reader } i \text{ where } i = 1, 2& \\
+  & \text{lpw}_i \text{ be local processing of writer } i \text{ where } i = 1, 2& \\
+  & \text{tr}_i \text{ be request reading of reader } i \text{ where } i = 1, 2&\\
+  & \text{tw}_i \text{ be request writing of writer } i \text{ where } i = 1, 2&\\
+  & \text{r}_i \text{ be reading of reader } i \text{ where } i = 1, 2&\\
+  & \text{w}_i \text{ be writing of writer } i \text{ where } i = 1, 2&
+\end{flalign*}
+We also introduce additional boolean variables (or atomic predicates): turn=w1
+(writer 1 will write), turn=w2 (writer 2 will write) and turn=r (one or both
+readers will read). \\
+Now states can be defined as by atomic predicates of the form:
+\begin{center}
+  (str1, str2, stw1, stw2, turn)
+\end{center}
+\begin{flalign*}
+  \text{where }
+  & \text{str1} \in \{\text{lpr}_1, \text{tr}_1, \text{r}_1\}
+      \text{ stands for status of reader 1}& \\
+  & \text{str2} \in \{\text{lpr}_2, \text{tr}_2, \text{r}_2\}
+      \text{ stands for status of reader 2}& \\
+  & \text{stw1} \in \{\text{lpw}_1, \text{tw}_1, \text{w}_1\}
+      \text{ stands for status of writer 1}& \\
+  & \text{stw2} \in \{\text{lpw}_2, \text{tw}_2, \text{w}_2\}
+      \text{ stands for status of writer 2}& \\
+  & \text{turn} \in \{\text{turn=w1}, \text{turn=w2}, \text{turn=r}\}
+      \text{ stands for status of turns}&
+\end{flalign*}
+A cycle of reader 1 is
+$$(\text{lpr}_1, \_, \_, \_, \_) \rightarrow (\text{tr}_1, \_, \_, \_, \_)
+  \rightarrow (\text{r}_1, \_, \_, \_, \_) \rightarrow \text{back to the
+  beginning}$$
+A cycle of reader 2 is
+$$(\text{lpr}_2, \_, \_, \_, \_) \rightarrow (\text{tr}_2, \_, \_, \_, \_)
+  \rightarrow (\text{r}_2, \_, \_, \_, \_) \rightarrow \text{back to the
+  beginning}$$
+A cycle of writer 1 is
+$$(\_, \_, \text{lpw}_1, \_, \_) \rightarrow (\_, \_, \text{tw}_1, \_, \_)
+  \rightarrow (\_, \_, \text{w}_1, \_, \_) \rightarrow \text{back to the
+  beginning}$$
+A cycle of writer 2 is
+$$(\_, \_, \text{lpw}_2, \_, \_) \rightarrow (\_, \_, \text{tw}_2, \_, \_)
+  \rightarrow (\_, \_, \text{w}_2, \_, \_) \rightarrow \text{back to the
+  beginning}$$
+This would result in $3 \times 3 \times 3 \times 3 \times 3 = 243$ states in the
+diagram. \\
+However, not all combinations of atomic predicates are allowed. For example, if
+the readers are reading, then no writers can write (the other reader can still
+read). That is
+$$\text{str1} = \text{r}_1 \Rightarrow \text{stw1} \neq \text{w}_1 \,\land\,
+\text{stw2} \neq \text{w}_2$$
+Similarly,
+$$\text{str2} = \text{r}_2 \Rightarrow \text{stw1} \neq \text{w}_1 \,\land\,
+\text{stw2} \neq \text{w}_2$$
+If one of the writer is writing, then the other writer cannot write and the two
+readers cannot read. That is
+$$\text{stw1} = \text{w}_1 \Rightarrow \text{str1} \neq \text{r}_1 \,\land\, 
+\text{str2} \neq \text{r}_2 \,\land\, \text{stw2} \neq \text{w}_2$$
+and
+$$\text{stw2} = \text{w}_2 \Rightarrow \text{str1} \neq \text{r}_1 \,\land\, 
+\text{str2} \neq \text{r}_2 \,\land\, \text{stw1} \neq \text{w}_1$$
+In total, there would be 203 states in the diagram, which is impossible to draw. \\
+Safety properties:
+\begin{itemize}
+  \item
+    \begin{flalign*}
+      \text{LTL: }
+      & \text{G}(\text{r}_1 \Rightarrow \neg (\text{w}_1 \,\lor\, \text{w}_2)) & \\
+      & \text{G}(\text{r}_2 \Rightarrow \neg (\text{w}_1 \,\lor\, \text{w}_2)) & \\
+      & \text{G}(\text{w}_1 \Rightarrow \neg (\text{r}_1 \,\lor\, \text{r}_2 \,\lor\, \text{w}_2)) & \\
+      & \text{G}(\text{w}_2 \Rightarrow \neg (\text{r}_1 \,\lor\, \text{r}_2 \,\lor\, \text{w}_1)) &
+    \end{flalign*}
+  \item
+    \begin{flalign*}
+      \text{LTL: }
+      & \text{AG}(\text{r}_1 \Rightarrow \neg (\text{w}_1 \,\lor\, \text{w}_2)) & \\
+      & \text{AG}(\text{r}_2 \Rightarrow \neg (\text{w}_1 \,\lor\, \text{w}_2)) & \\
+      & \text{AG}(\text{w}_1 \Rightarrow \neg (\text{r}_1 \,\lor\, \text{r}_2 \,\lor\, \text{w}_2)) & \\
+      & \text{AG}(\text{w}_2 \Rightarrow \neg (\text{r}_1 \,\lor\, \text{r}_2 \,\lor\, \text{w}_1)) &
+    \end{flalign*}
+\end{itemize}
+Liveness properties:
+\begin{itemize}
+  \item
+    \begin{flalign*}
+      \text{LTL: }
+      & \text{G}(\text{tr}_1 \Rightarrow \text{F } \text{r}_1) & \\
+      & \text{G}(\text{tr}_2 \Rightarrow \text{F } \text{r}_2) & \\
+      & \text{G}(\text{tw}_1 \Rightarrow \text{F } \text{w}_1) & \\
+      & \text{G}(\text{tw}_2 \Rightarrow \text{F } \text{w}_2) &
+    \end{flalign*}
+  \item
+    \begin{flalign*}
+      \text{LTL: }
+      & \text{G}(\text{tr}_1 \Rightarrow \text{F } \text{r}_1) & \\
+      & \text{G}(\text{tr}_2 \Rightarrow \text{F } \text{r}_2) & \\
+      & \text{G}(\text{tw}_1 \Rightarrow \text{F } \text{w}_1) & \\
+      & \text{G}(\text{tw}_2 \Rightarrow \text{F } \text{w}_2) &
+    \end{flalign*}
+\end{itemize}
+
+
+\end{document}
