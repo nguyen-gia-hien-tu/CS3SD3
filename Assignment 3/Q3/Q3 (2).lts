@@ -1,10 +1,9 @@
-set Bold = {bold1, bold2}
-set Meek = {meek1, meek2}
-set Customers = {Bold, Meek}
+range B = 1..2
+range M = 1..2
+
+set   C = {[B], [M]}
 
 CUSTOMER = (getcheese -> CUSTOMER).
 COUNTER = (getcheese -> COUNTER).
 
-||CHEESE_COUNTER = (c[Customers]:CUSTOMER || {c[Customers]}::COUNTER) >> {c[Meek].getcheese}.
-
-//||CHEESE_COUNTER = (Customers:CUSTOMER || COUNTER)  >> {Meek.getcheese}.
+||CHEESE_COUNTER = (c[C]:CUSTOMER || {c[C]}::COUNTER) >> {getcheese}.

@@ -1,0 +1,12 @@
+range Burgers = 0..2
+
+CLIENT = ( check -> get -> CLIENT ).
+
+POT = POT[0],
+POT[p: Burgers] = ( when p > 0 check -> get -> POT[p - 1]
+				  | fill[n: Burgers] -> POT[n] ).
+
+COOK = ( fill[p: 1..2] -> COOK ) + {fill[0]}.
+
+||DS = ( c1 : CLIENT || c2 : CLIENT || {c1, c2} :: POT || COOK )
+	   /{ {c1, c2}.check/check, {c1, c2}.get/get }.

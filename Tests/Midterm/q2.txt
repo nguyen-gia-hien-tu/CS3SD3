@@ -1,0 +1,22 @@
+a)
+
+CUSTOMER = (get_tea -> drink_tea -> CUSTOMER
+
+                         |get_coffee -> drink_coffee -> CUSTOMER)
+
+TEA_MACHINE = TEA_MACHINE[N]
+
+TEA_MACHINE[i:0..N] = (when (i > 0) get_tea -> TEA_MACHINE[i-1]
+
+                                          |when (i == 0) refill_tea -> get_tea -> TEA_MACHINE[N-1])
+
+COFFEE_MACHINE = COFFEEMACHINE[N]
+
+COFFEE_MACHINE[i:0..N] = (when (i > 0) get_coffee -> COFFEE_MACHINE[i-1)
+
+                                                 |when (i == 0) refill_coffee -> get_coffee -> COFFEE_MACHINE[N-1])
+
+STAFF_MEMBER = (refill_tea -> STAFF_MEMBER
+                                 |refill_coffee -> STAFF_MEMBER)
+
+CAFETERIA = (CUSTOMER || TEA_MACHINE || COFFEE_MACHINE || STAFF_MEMBER)

@@ -1,6 +1,6 @@
 // Assume the producer can send 3 messages (N = 3)
 
-range M = 0..9
+range M = 0..2
 set S = {[M],[M][M]}
 PORT            = (send[x:M]  -> PORT[x]),
 PORT[v:M]       = (send[x:M]  -> PORT[x][v]
@@ -9,14 +9,12 @@ PORT[s:S][v:M]  = (send[x:M]  -> PORT[x][s][v]
 				  |receive[v] -> PORT[s]).
 
 PRODUCER = PRODUCER[0],
-PRODUCER[e:M] = (port.send[e] -> PRODUCER[(e+1)%10]).
+PRODUCER[e:M] = (port.send[e] -> PRODUCER[(e+1)%3]).
 
 CONSUMER = (port.receive[v:M] -> CONSUMER).
 
-||AsyncMsg = (s[1..2]:PRODUCER || CONSUMER || port:PORT)
-             /{s[1..2].port.send/port.send}.
-
-||Abstract = AsyncMsg
-             /{s[1..2].port.send/s[1..2].port.send[M], 
-               port.receive/port.receive[M]
-              }.
+||PRODCONS = (PRODUCER || CONSUMER || port1:PORT || port2:PORT)
+             /{port1.send/port1.send[M],
+			   port2.send/port2.send[M],
+			   port1.receive/port1.receive[M],
+			   port2.receive/port2.receive[M]}.

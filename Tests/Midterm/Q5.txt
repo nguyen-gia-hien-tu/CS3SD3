@@ -1,0 +1,26 @@
+a)
+
+After ba, P is in state p2 and both actions b and c are allowed. After ba, Q is either in state q2 or q3. From q2, we can only perform action b. From q3, we can only perform action c. Thus, both pairs (p2, q2) and (p2, q3) are not bisimilar, so P and Q are not bisimilar.
+
+
+
+
+b)
+
+p0 and s0 are bisimlar as in both cases, only action b is allowed.
+
+p0 and s3 are bisimilar as in both cases, only action b is allowed.
+
+p1 and s1 are bisimilar as in both cases. only action a is allowed.
+
+p2 and s2 are bisimilar as in both cases, either both actions b and c are allowed.
+
+We have exhausted all cases, so P and S are bisimilar.
+
+
+
+
+
+
+
+

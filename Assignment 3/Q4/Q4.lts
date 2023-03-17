@@ -16,7 +16,7 @@ TICKET[t:T] = (ticket[t] -> TICKET[t%MT + 1]).
 COUNTER = COUNTER[1],
 COUNTER[t:T] = (getcheese -> COUNTER[t%MT + 1]).
 
-||CHEESE_COUNTER = (c[C]:CUSTOMER || {c[C]}::TICKET || {c[C]}::COUNTER).
+||CHEESE_COUNTER = (c[C]:CUSTOMER || {c[C]}::TICKET || {c[C]}::COUNTER) >> {M.getcheese}.
 
 progress BOLD = {B.getcheese}
 progress MEEK = {M.getcheese}

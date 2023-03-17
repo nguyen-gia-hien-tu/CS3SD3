@@ -1,0 +1,24 @@
+(a)
+
+(i) Since r ∈ L(s0) and we can have the path s0 -> s0 -> s0 -> ... So, M, s0 |= EG r is true
+
+Since r ∈ L(s2) and r ∈ L(s1) and we can have the path s2 -> s1 -> s2 -> s1 -> ... So, M, s2 |= EG r is true
+
+(ii) Since any state has either r or q; M, s0 |= G(r ∨ q) is true and M, s2 |= G(r ∨ q) is true
+
+
+
+
+(b) GF enabled ⇒ GF running
+
+
+
+
+(c)  AG (AF enabled ⇒ AG (AF running))
+
+
+
+
+(d) LTL: G (floor=5 ∧ ButtonPressed2 ⇒ G ¬(floor=6) ∨ floor6light=on ∨ F (ButtonPressed6))
+
+CTL: AG (floor=5 ∧ ButtonPressed2 ⇒ AG ¬(floor=6) ∨ floor6light=on ∨ AF (ButtonPressed6))

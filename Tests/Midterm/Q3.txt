@@ -1,0 +1,37 @@
+A = (b -> C | c -> D)
+
+B = (a -> A | b -> B)
+
+C = (a -> B | a -> D | b -> C)
+
+// D = (b -> B)
+
+
+
+
+
+
+
+a)
+
+RESOURCE = (get -> put -> RESOURCE)
+
+P = (getA -> getB -> job -> releaseA -> releaseB -> P)
+
+Q = (getB -> GET_A)
+
+GET_A = (getA -> job -> releaseB -> releaseA -> Q
+
+                |releaseB -> Q)
+
+R = (getA -> GET_BR | getB -> GET_AR)
+
+GET_BR = (getB -> job -> releaseA -> releaseB -> R
+
+                  |releaseA -> R)
+
+GET_AR = (getA -> job -> releaseB -> releaseA -> R
+
+                  |releaseB -> R)
+
+||THREE_PROCESSES = (p: P || q:Q || r:R || a:RESOURCE || b:RESOURCE) / {{p,q,r}.getA/a.get, {p,q,r}.releaseA/a.put, {p,q,r}.getB/b.get, {p,q,r}.releaseB/b.put}

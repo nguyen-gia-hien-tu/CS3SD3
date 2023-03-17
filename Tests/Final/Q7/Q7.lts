@@ -1,0 +1,24 @@
+// Q7
+
+// General Semaphore
+// Assume INIT_VAL = 3
+const INIT_VAL = 3
+
+SEM(N = INIT_VAL) = SEMA[N],
+SEMA[v : 0..INIT_VAL] = (when (v < Max) up -> SEMA[v + 1]
+						|when (v > 0) down -> SEMA[v - 1]).
+
+// Simplified Multidimensional Semaphores
+||SEMS1S2(INIT1 = 3, INIT2 = 3) = (S1 : SEM(3) || S2 : SEM(3))
+								  /{ S1.S2.up/S1.up, S1.S2.up/S2.up, S1.S2.down/S1.down, S1.S2.down/S2.down }.
+
+
+// const INIT_VAL = 3
+
+// SEM(N = INIT_VAL) = SEMA[N],
+// SEMA[v : 0..INIT_VAL] = (when (v < Max) up -> SEMA[v + 1]
+// 						|when (v > 0) down -> SEMA[v - 1]).
+
+// Simplified Multidimensional Semaphores
+// ||SEMS1S2(INIT1 = 3, INIT2 = 3) = (S1 : SEM(3) || S2 : SEM(3))
+//								  /{ S1.S2.up/S1.up, S1.S2.up/S2.up, S1.S2.down/S1.down, S1.S2.down/S2.down }.

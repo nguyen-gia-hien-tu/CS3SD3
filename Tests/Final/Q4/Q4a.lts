@@ -1,0 +1,14 @@
+const Z = 0
+const M = 3
+
+range FOOD = Z..M // 0..3
+
+SAVAGE = (get_serving -> SAVAGE).
+COOK = (fill_pot -> COOK).
+
+POT = SERVINGS[M],
+SERVINGS [i:FOOD] = ( when (i == 0) fill_pot -> SERVINGS[M] 
+                    | when (i > 0) get_serving -> SERVINGS[i - 1]
+                    ).
+
+||SAV_COMP = (SAVAGE || COOK || POT).

@@ -1,0 +1,23 @@
+// Q1a)
+
+// Assume the user can print 3 jobs before running out of toner
+const N = 3
+range J = 0..N
+
+// the user prints
+USER = (print -> USER).
+
+// the technician fills the toner whenever the printer is out of toner
+// i.e., after N number of printing jobs
+TECHNICIAN = (fill_toner -> TECHNICIAN).
+
+// the printer starts off with full toner, then for each printing job,
+// we reduce the number of prints left.
+// When the number of prints left is 0, this means the printer is out of toner,
+// so we need to fill the toner
+PRINTER = PRINTER[N],
+PRINTER[i:J] = ( when (i == 0) fill_toner -> PRINTER[N]
+			   | when (i > 0) print -> PRINTER[i - 1]
+			   ).
+
+||OFFICE = (USER || PRINTER || TECHNICIAN).

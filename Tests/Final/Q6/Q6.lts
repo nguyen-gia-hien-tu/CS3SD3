@@ -1,0 +1,8 @@
+property Alpha = (a -> b -> Alpha | b -> Beta) + {d}.
+         Beta  = (c -> b -> Alpha | b -> Beta).
+
+Alpha1 = (a -> b -> Alpha1 | b -> Beta1) + {d}.
+Beta1  = (c -> b -> Alpha1 | b -> Beta1).
+
+Alpha2 = (a -> Beta2 | b -> ERROR | d -> ERROR),
+Beta2  = (b -> Alpha2 | a -> ERROR | d -> ERROR).

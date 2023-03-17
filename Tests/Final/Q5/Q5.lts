@@ -1,0 +1,12 @@
+// Q5
+
+BSEMA = (up -> down -> BSEMA).
+PROCESS = (console.up -> console.down -> PROCESS).
+set Processes = {user[1..2], system[1..2]}
+
+||OS = (Processes : PROCESS || Processes :: console : BSEMA).
+
+// user process may be denied access to the console when
+// system processes have higher priority than user processes
+// uncomment the line below and comment the ||OS line above to check
+// ||OS = (Processes : PROCESS || Processes :: console : BSEMA) >> {user}.
