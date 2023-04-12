@@ -1,0 +1,24 @@
+q2.txt
+
+// account is being shared by several people
+
+// balance of the account must NEVER
+//   be negative (1)
+
+// deposit and withdraw are allowed as long
+//   as (1) isn't violated
+
+const MIN = 0
+const MAX = 9
+
+range FUNDS = MIN..MAX // 0..9
+
+SAVINGS_ACCOUNT = SAVINGS_ACCOUNT[0],
+SAVINGS_ACCOUNT[balance:FUNDS] =
+    ( when (balance > 0) withdraw[m:1..balance] -> SAVINGS_ACCOUNT[balance-m]
+    | deposit[m:1..MAX] -> SAVINGS_ACCOUNT[balance+m]
+    //| when (balance < 10) 
+    ). 
+
+
+// "if" statements are like "when" in LTSA

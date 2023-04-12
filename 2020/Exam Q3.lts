@@ -1,0 +1,28 @@
+// large pot can hold a max of 'M' servings
+
+// if savage is hungry, then savage will eat // will only eat if pot is not empty
+
+// if savage is hungry, and pot is empty, then savagae will wait for pot to be refilled
+
+// if the pot is empty, then the cook will refill pot with M servings
+
+const Z = 0
+const M = 3
+
+range FOOD = Z..M // 0..3
+
+// How we define each "party"?
+SAVAGE = (get_serving -> SAVAGE).
+COOK = (fill_pot -> COOK).
+
+// this is basically the description for the POT
+POT = SERVINGS[Z],
+SERVINGS [i:FOOD] = ( when ( i == 0 ) fill_pot    -> SERVINGS[M] 
+                    | when ( i > 0  ) get_serving -> SERVINGS[i - 1]
+                    ).
+
+// composition of 3 states
+||SAV_COMP = (SAVAGE || COOK || POT).
+
+
+// "when" statements are kind of like "if statements"
